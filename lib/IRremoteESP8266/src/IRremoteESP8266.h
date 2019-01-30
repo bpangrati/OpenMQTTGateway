@@ -37,7 +37,7 @@
  *
  *  GPL license, all text above must be included in any redistribution
  ****************************************************/
-
+xxx
 #ifndef IRREMOTEESP8266_H_
 #define IRREMOTEESP8266_H_
 
@@ -260,6 +260,7 @@ enum decode_type_t {
 #define DISH_MIN_REPEAT              3U
 #define GICABLE_BITS                16U
 #define GICABLE_MIN_REPEAT           1U
+xxx
 #define GREE_STATE_LENGTH            8U
 #define GREE_BITS                   (GREE_STATE_LENGTH * 8)
 #define HAIER_AC_STATE_LENGTH        9U

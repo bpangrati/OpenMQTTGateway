@@ -1,15 +1,15 @@
-/*  
-  OpenMQTTGateway  - ESP8266 or Arduino program for home automation 
+/*
+  OpenMQTTGateway  - ESP8266 or Arduino program for home automation
 
-   Act as a wifi or ethernet gateway between your 433mhz/infrared IR signal  and a MQTT broker 
+   Act as a wifi or ethernet gateway between your 433mhz/infrared IR signal  and a MQTT broker
    Send and receiving command by MQTT
- 
-   This files enables to set your parameter for the infrared gateway 
-  
+
+   This files enables to set your parameter for the infrared gateway
+
     Copyright: (c)Florian ROBERT
-  
+
     This file is part of OpenMQTTGateway.
-    
+
     OpenMQTTGateway is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -44,76 +44,76 @@
 #define PanasonicAddress      0x4004     // Panasonic address (Pre data) 
 
 #ifdef ESP8266 //IR supported protocols on ESP8266, all supported per default
-  #define IR_GC
-  #define IR_Raw
-  #define IR_COOLIX
-  #define IR_Whynter
-  #define IR_LG
-  #define IR_Sony
-  #define IR_DISH
-  #define IR_RC5
-  #define IR_RC6
-  #define IR_Sharp
-  #define IR_SAMSUNG
-  #define IR_PANASONIC
-  #define IR_RCMM
-  #define IR_MITSUBISHI
-  #define IR_GICABLE
-  #define IR_MITSUBISHI2
-  #define IR_LASERTAG
-  #define IR_CARRIER_AC
-  #define IR_MIDEA
-  #define IR_NIKAI
-  #define IR_SHERWOOD
-  #define IR_DENON
-  #define IR_AIWA_RC_T501
-  #define IR_JVC
+#define IR_GC
+#define IR_Raw
+#define IR_COOLIX
+#define IR_Whynter
+#define IR_LG
+#define IR_Sony
+#define IR_DISH
+#define IR_RC5
+#define IR_RC6
+#define IR_Sharp
+#define IR_SAMSUNG
+#define IR_PANASONIC
+#define IR_RCMM
+#define IR_MITSUBISHI
+#define IR_GICABLE
+#define IR_MITSUBISHI2
+#define IR_LASERTAG
+#define IR_CARRIER_AC
+#define IR_MIDEA
+#define IR_NIKAI
+#define IR_SHERWOOD
+#define IR_DENON
+#define IR_AIWA_RC_T501
+#define IR_JVC
 #elif ESP32
-  #define IR_Raw
-  #define IR_COOLIX
-  #define IR_Whynter
-  #define IR_Sony
-  #define IR_LG
-  #define IR_DISH
-  #define IR_RC5
-  #define IR_Sharp
-  #define IR_SAMSUNG
-  #define IR_PANASONIC
+#define IR_Raw
+#define IR_COOLIX
+#define IR_Whynter
+#define IR_Sony
+#define IR_LG
+#define IR_DISH
+#define IR_RC5
+#define IR_Sharp
+#define IR_SAMSUNG
+#define IR_PANASONIC
 #elif __AVR_ATmega2560__
-  #define IR_COOLIX
-  #define IR_Whynter
-  #define IR_LG
-  #define IR_Sony
-  #define IR_DISH
-  #define IR_RC5
-  #define IR_Sharp
-  #define IR_SAMSUNG
-  #define IR_Raw
-  #define IR_PANASONIC
+#define IR_COOLIX
+#define IR_Whynter
+#define IR_LG
+#define IR_Sony
+#define IR_DISH
+#define IR_RC5
+#define IR_Sharp
+#define IR_SAMSUNG
+#define IR_Raw
+#define IR_PANASONIC
 #else //IR supported protocols on arduino uncomment if you want to send with this protocol, NEC protocol is available per default
-  //#define IR_COOLIX
-  //#define IR_Whynter
-  //#define IR_LG
-  //#define IR_Sony
-  //#define IR_DISH
-  //#define IR_RC5
-  //#define IR_Sharp
-  //#define IR_SAMSUNG
-  //#define IR_Raw
-  //#define IR_PANASONIC
+//#define IR_COOLIX
+//#define IR_Whynter
+//#define IR_LG
+//#define IR_Sony
+//#define IR_DISH
+//#define IR_RC5
+//#define IR_Sharp
+//#define IR_SAMSUNG
+//#define IR_Raw
+//#define IR_PANASONIC
 #endif
 
 /*-------------------PIN DEFINITIONS----------------------*/
 #ifdef ESP8266
-  #define IR_RECEIVER_PIN 2
-  #define IR_EMITTER_PIN 16 // replace by 0 (D3) if you use IR LOLIN controller shield
+#define IR_RECEIVER_PIN 13
+#define IR_EMITTER_PIN 15 // replace by 0 (D3) if you use IR LOLIN controller shield
 #elif ESP32
-  #define IR_RECEIVER_PIN 27
-  #define IR_EMITTER_PIN 14
+#define IR_RECEIVER_PIN 27
+#define IR_EMITTER_PIN 14
 #elif __AVR_ATmega2560__
-  #define IR_RECEIVER_PIN 2 // 2 = D2 on mega
-  #define IR_EMITTER_PIN 7
+#define IR_RECEIVER_PIN 2 // 2 = D2 on mega
+#define IR_EMITTER_PIN 7
 #else
-  #define IR_RECEIVER_PIN 0 // 0 = D2 on arduino
-  #define IR_EMITTER_PIN 9
+#define IR_RECEIVER_PIN 0 // 0 = D2 on arduino
+#define IR_EMITTER_PIN 9
 #endif

@@ -26,9 +26,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifdef ZgatewayIR
-
-#ifdef ESP8266
+#if defined(ESP8266)
   #include <IRremoteESP8266.h>
+#ifndef GICABLE_MIN_REPEAT
+  #define GICABLE_MIN_REPEAT           1U
+  #define SHERWOOD_MIN_REPEAT          1U
+  #define MITSUBISHI_MIN_REPEAT        1U  // Based on marcosamarinho's code.
+  #define AIWA_RC_T501_MIN_REPEAT      1U
+  
+#endif
   #include <IRsend.h>  // Needed if you want to send IR commands.
   #include <IRrecv.h>  // Needed if you want to receive IR commands.
   #ifdef DumpMode // in dump mode we increase the size of the buffer to catch big codes
@@ -79,7 +85,7 @@ void setupIR()
 #ifdef ESP8266
   irsend.begin();
 #endif
-
+//irrecv.setUnknownThreshold(60);
 irrecv.enableIRIn(); // Start the receiver
   
 trc(F("IR_EMITTER_PIN "));
@@ -495,7 +501,8 @@ void IRtoMQTT(){
         trc(raw);
         const char * protocol_name = IRdata["protocol_name"];
         unsigned int valueBITS  = IRdata["bits"];
-        uint16_t  valueRPT = IRdata["repeat"]|repeatIRwNumber;
+        uint16_t  valueRPT = IRdata["repeat"];
+        if (valueRPT == 0) valueRPT = repeatIRwNumber;
 
         if(raw){
             unsigned int s = strlen(raw);
