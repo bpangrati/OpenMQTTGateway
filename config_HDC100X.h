@@ -4,7 +4,7 @@
    Act as a wifi or ethernet gateway between your 433mhz/infrared IR signal  and a MQTT broker 
    Send and receiving command by MQTT
  
-   This files enables to set your parameter for the DHT11/22 sensor
+   This files enables to set your parameter for the HDC100X sensor
   
     Copyright: (c)Florian ROBERT
   
@@ -26,18 +26,5 @@
 
 /*----------------------------USER PARAMETERS-----------------------------*/
 /*-------------DEFINE YOUR MQTT PARAMETERS BELOW----------------*/
-#define DHTTOPIC    Base_Topic Gateway_Name "/DHTtoMQTT/dht1"
-#define dht_always true // if false when the current value for temp or hum is the same as previous one don't send it by MQTT
-#define TimeBetweenReadingDHT 30000 // time between 2 DHT readings
-/*-------------DHT SENSOR TYPE-------------*/
-                      #define DHT_SENSOR_TYPE DHT11 //uncomment for DHT11 Sensor
-//#define DHT_SENSOR_TYPE DHT21 //uncomment for DHT21 Sensor
-#define DHT_SENSOR_TYPE DHT22 //uncomment for DHT22 Sensor (default for backwards compatibility)
-/*-------------------PIN DEFINITIONS----------------------*/
-#if defined(ESP8266)
-  #define DHT_RECEIVER_PIN 5 //5 = D1 you can put 14 = D5 if you don't use HCSR501 sensor and the RFM69
-#elif defined(ESP32)
-  #define DHT_RECEIVER_PIN 16
-#else
-  #define DHT_RECEIVER_PIN 8
-#endif
+#define subjectHDC100XtoMQTT  Base_Topic Gateway_Name "/HDC100XtoMQTT"
+#define TimeBetweenReadingHDC100X 30000 // time between 2 HDC100X readings

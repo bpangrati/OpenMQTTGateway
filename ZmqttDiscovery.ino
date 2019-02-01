@@ -185,6 +185,26 @@ void pubMqttDiscovery()
   }
 #endif
 
+#ifdef ZsensorHDC100X
+  #define HDC100XparametersCount 3
+  trc(F("HDC100XDiscovery"));
+  char * HDC100Xsensor[HDC100XparametersCount][8] = {
+     {"sensor", "temp", "HDC100X", "","{{ value_json.temp }}","", "", "C"} ,
+     {"sensor", "humi", "HDC100X","","{{ value_json.humi }}","", "", "%"} ,
+     //component type,name,availability topic,device class,value template,payload on, payload off, unit of measurement
+  };
+  
+  for (int i=0;i<HDC100XparametersCount;i++){
+   trc(F("CreateDiscoverySensor"));
+   trc(HDC100Xsensor[i][1]);
+    createDiscovery(HDC100Xsensor[i][0],
+                    subjectHDC100XtoMQTT, HDC100Xsensor[i][1], (char *)getUniqueId(HDC100Xsensor[i][1], HDC100Xsensor[i][2]).c_str(),
+                    will_Topic, HDC100Xsensor[i][3], HDC100Xsensor[i][4],
+                    HDC100Xsensor[i][5], HDC100Xsensor[i][6], HDC100Xsensor[i][7],
+                    true, false, 0,"","",true,"");
+  }
+#endif
+
 #ifdef ZactuatorONOFF
   trc(F("actuatorONOFFDiscovery"));
   char * actuatorONOFF[8] = {"switch", "actuatorONOFF", "", "","","ON", "OFF", ""};

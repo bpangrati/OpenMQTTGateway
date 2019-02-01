@@ -106,6 +106,9 @@
 #ifdef ZsensorINA226
   #include "config_INA226.h"
 #endif
+#ifdef ZsensorHDC100X
+  #include "config_HDC100X.h"
+#endif
 #ifdef ZsensorHCSR501
   #include "config_HCSR501.h"
 #endif
@@ -392,6 +395,9 @@ void setup()
   #ifdef ZsensorINA226
     setupINA226();
   #endif
+  #ifdef ZsensorHDC100X
+    setupHDC100X();
+  #endif
   #ifdef ZsensorHCSR501
     setupHCSR501();
   #endif
@@ -650,6 +656,9 @@ void loop()
     #ifdef ZsensorINA226
       MeasureINA226(); //Addon to measure the temperature with a DHT
     #endif
+    #ifdef ZsensorHDC100X
+      MeasureHDC100X(); //Addon to measure the temperature with a DHT
+    #endif
     #ifdef ZsensorHCSR501
       MeasureHCSR501();
     #endif
@@ -773,6 +782,9 @@ void stateMeasures(){
       #endif
       #ifdef ZsensorINA226
           modules = modules + ZsensorINA226;
+      #endif
+      #ifdef ZsensorHDC100X
+          modules = modules + ZsensorHDC100X;
       #endif
       #ifdef ZsensorHCSR501
           modules = modules + ZsensorHCSR501;
